@@ -1,0 +1,9 @@
+
+// 定义对象
+table User {
+    id: long;
+    name: string;
+    age: uint;
+    createTime:string;
+
+}

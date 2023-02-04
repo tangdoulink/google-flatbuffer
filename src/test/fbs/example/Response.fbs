@@ -1,0 +1,89 @@
+include "PlayerData.fbs";
+namespace com.apus.jhhj.game.api.flatbuffer;
+
+///保存数据接口响应
+table SaveDataResponse {
+    baseResponse:BaseResponse;
+    ///保存结果
+    data:bool;
+}
+
+///获取数据接口响应
+table QueryDataResponse {
+    baseResponse:BaseResponse;
+    data:string;
+}
+
+///获取时间戳接口响应
+table DateTimeResponse {
+    baseResponse:BaseResponse;
+    ///时间戳 13位毫秒时间戳
+    data:long;
+}
+///抽卡接口响应
+table CardDrawResponse {
+    baseResponse:BaseResponse;
+    ///时间戳 13位毫秒时间戳
+    data:[int];
+}
+///公告查询接口响应
+table NoticeInfoResponse {
+    baseResponse:BaseResponse;
+    ///公告详情集合
+    data:[NoticeInfo];
+}
+///公告查询接口响应
+table NoticeRepealResponse {
+    baseResponse:BaseResponse;
+    ///已撤销的公告id
+    data:[int];
+}
+///公告详情
+table NoticeInfo {
+    ///id,可通过id判断撤销操作
+    id:int;
+    ///国家
+    country:int;
+    ///语言
+    language:int;
+    ///开始时间 时间戳
+    startTime:long;
+    ///结束时间 时间戳
+    endTime:long;
+    ///公告名称
+    noticeName:string;
+    ///公告类型
+    noticeType:int;
+    ///公告内容
+    noticeContent:string;
+}
+///道具变更响应
+table PropUpdateRecordResponse{
+    baseResponse:BaseResponse;
+    ///变更后总数
+    data:int;
+}
+
+///道具总量查询
+table PropTotalResponse{
+    baseResponse:BaseResponse;
+    ///当前总量
+    data:[PropTotalInfo];
+}
+///道具总量结果
+table PropTotalInfo{
+    ///金币、道具等id
+    propType:int;
+    ///当前总量
+    count:int;
+}
+
+///通用响应类型
+table BaseResponse {
+    ///logId
+    logId:string;
+    ///响应码
+    code:int;
+    ///结果描述
+    message:string;
+}

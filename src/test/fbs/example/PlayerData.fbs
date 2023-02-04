@@ -1,0 +1,8 @@
+namespace com.apus.jhhj.game.api.flatbuffer;
+///玩家信息
+table PlayerData {
+    ///服务器id
+    serverId:int;
+    ///json数据
+    data:string;
+}

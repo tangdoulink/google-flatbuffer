@@ -1,0 +1,51 @@
+namespace com.apus.jhhj.game.api.flatbuffer;
+
+///获取数据接口请求参数
+table QueryDataRequest {
+    ///服务器id
+    serverId:int;
+}
+///抽卡接口请求参数
+table CardDrawRequest {
+    ///服务器id
+    serverId:int;
+    ///抽卡池id
+    cardPoolId:int;
+    ///抽卡方式,1单抽,2十连抽
+    draw:int;
+}
+///公告接口请求参数
+table NoticeInfoRequest {
+    ///公告类型 0 查询所有类型 1 查询常规公告 ...
+    type:int;
+    ///用户通用参数
+    baseInfo:string;
+}
+///撤销接口请求参数
+table NoticeRepealRequest {
+    ///用户通用参数
+    baseInfo:string;
+}
+///金币、道具变更接口
+table PropUpdateRecordRequest {
+    ///用户通用参数
+    baseInfo:string;
+    ///金币、道具等id，每种物品该值不能变，由客户端定义,非负整数
+    propType:int;
+    ///来源，判断是如何增加或扣减的，9是充值，其他客户端定
+    srcType:int;
+    ///本次记录增加或减小金币等的值，负数为减少
+    recordCount:int;
+    ///订单号，如果是充值后增加的道具，关联此字段，否则为空
+    orderNo:string;
+    ///操作唯一标识,最长20位
+    uniqId:string;
+}
+
+///金币、道具总量查询接口
+table PropTotalRequest {
+    ///用户通用参数
+    baseInfo:string;
+    ///金币、道具等id，每种物品该值不能变，由客户端定义
+    propType:[int];
+}
